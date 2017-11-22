@@ -1,16 +1,10 @@
 package com.parle
 import scala.io.Source
-import org.apache.spark.sql.Dataset
-import org.apache.spark.sql.Row
 import org.apache.spark.sql.SQLContext
-import java.security.MessageDigest
-import org.apache.spark.sql.types.DataType
-import org.apache.spark.sql.types.DataTypes
-import org.apache.spark.sql.api.java.UDF1
-import org.apache.spark.sql.Dataset
-import org.apache.spark.SparkConf
-import org.apache.spark.sql.SparkSession
-import org.apache.spark.SparkContext
+import sqlContext.implicits._
+import org.apache.spark.sql._
+import org.apache.spark.sql.DataFrame
+import org.apache.spark.sql.SQLContext
 
 
 object testing {
