@@ -14,7 +14,7 @@ import org.apache.spark.SparkContext
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.types._
 import scala.io.Source
-import spark.implicits._
+//import spark.implicits._
 //import sparkSession.implicits._
 
 
@@ -25,7 +25,8 @@ object testing {
 
 		    	val conf = new SparkConf().setAppName("test").setMaster("local")
 		    	val sc = new SparkContext(conf)
-					val sparkSession = SparkSession.builder().appName("test").master("local").getOrCreate()
+					val sqlContext= new org.apache.spark.sql.SQLContext(sc)
+          import sqlContext.implicits._
 				//	val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc) 
 
 				val tableList = args(0)
@@ -48,7 +49,7 @@ object testing {
 
 
                
-               
+  
             /*   df.saveAsTable("parle.base_extract")
 								
 								
