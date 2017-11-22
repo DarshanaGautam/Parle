@@ -1,20 +1,17 @@
 package com.parle
-import org.apache.spark.sql.DataFrame
+import scala.io.Source
+import org.apache.spark.sql.Dataset
 import org.apache.spark.sql.Row
+import org.apache.spark.sql.SQLContext
 import java.security.MessageDigest
+import org.apache.spark.sql.types.DataType
+import org.apache.spark.sql.types.DataTypes
+import org.apache.spark.sql.api.java.UDF1
 import org.apache.spark.sql.Dataset
 import org.apache.spark.SparkConf
-import org.apache.spark.rdd.RDD.rddToPairRDDFunctions
-import scala.reflect.runtime.universe
-import java.util.Calendar
+import org.apache.spark.sql.SparkSession
 import org.apache.spark.SparkContext
-import org.apache.spark.sql.hive.HiveContext
-import org.apache.spark.sql.functions.lit
-import scala.io.Source
-import java.sql.DriverManager
-import java.sql.Connection
-import org.apache.spark.sql.types.{StructType,StructField,StringType}
-import org.apache.spark.sql.Row
+
 
 object testing {
   
