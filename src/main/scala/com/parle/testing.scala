@@ -1,11 +1,19 @@
 package com.parle
 import scala.io.Source
+import org.apache.spark.sql.Dataset
+import org.apache.spark.sql.Row
 import org.apache.spark.sql.SQLContext
-import org.apache.spark.sql.DataFrame
+import java.security.MessageDigest
+import org.apache.spark.sql.types.DataType
+import org.apache.spark.sql.types.DataTypes
+import org.apache.spark.sql.api.java.UDF1
+import org.apache.spark.sql.Dataset
 import org.apache.spark.SparkConf
-import sqlContext.implicits._
-import org.apache.spark.sql._
+import org.apache.spark.sql.SparkSession
+import org.apache.spark.SparkContext
 import org.apache.spark.sql.DataFrame
+import scala.io.Source
+import sparkSession.implicits._
 
 
 
@@ -13,9 +21,9 @@ object testing {
   
   def main(args: Array[String]): Unit = {
 
-		    	val conf = new SparkConf().setAppName("parle test")
-					val sc = new SparkContext(conf)
-					val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc) 
+		    	val conf = new SparkConf().setAppName("test").setMaster("local")
+					val sparkSession = SparkSession.builder().appName("test").master("local").getOrCreate()
+				//	val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc) 
 
 				val tableList = args(0)
 				
