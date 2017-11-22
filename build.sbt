@@ -10,6 +10,7 @@ libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-sql" % sparkVersion,
   "org.apache.spark" %% "spark-hive" % sparkVersion,
   "com.microsoft.sqlserver" % "mssql-jdbc" % "6.1.0.jre8",
-  "com.typesafe" % "config" % "1.3.1"
+  "com.typesafe" % "config" % "1.3.1",
+  "com.databricks" % "spark-csv" % sparkVersion
 )
 
