@@ -26,6 +26,7 @@ object testing {
 		    	val conf = new SparkConf().setAppName("test").setMaster("local")
 		    	val sc = new SparkContext(conf)
 					val sqlContext= new org.apache.spark.sql.SQLContext(sc)
+		    	val spark = org.apache.spark.sql.SparkSession.builder.master("local").appName("Spark CSV Reader").getOrCreate;
           import sqlContext.implicits._
 				//	val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc) 
 
