@@ -22,6 +22,7 @@ object testing {
   def main(args: Array[String]): Unit = {
 
 		    	val conf = new SparkConf().setAppName("test").setMaster("local")
+		    	val sc = new SparkContext(conf)
 					val sparkSession = SparkSession.builder().appName("test").master("local").getOrCreate()
 				//	val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc) 
 
