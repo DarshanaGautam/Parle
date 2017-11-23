@@ -28,7 +28,7 @@ object TableCreation {
           import sqlContext.implicits._
 			
 				val tabledetails = args(0)
-				val tablename = arges(1)
+				val tablename = args(1)
 				
 				for (table <- Source.fromFile(tablename).getLines) {
 				  
@@ -141,7 +141,8 @@ object TableCreation {
 					hiveContext.sql(dropQuery)
 					hiveContext.sql(createQuery)
 				} // End outer For
-					
+			
+          
    }// End main
    
 }// End object
