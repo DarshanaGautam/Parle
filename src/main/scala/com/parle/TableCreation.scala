@@ -33,11 +33,11 @@ object TableCreation {
 				
 				for (table <- Source.fromFile(tablename).getLines) {
 				  
-				  var sfatable=""
-				  var Tablename=""
-				  var sfatable=table
+				  //var sfatable=""
+				  //var Tablename=""
+				  var sfatable=table.toString
 				  var columnString =""
-				  var flag=""
+				  var flag= true 
 				  
 				
 				  val dropQuery = "drop table if exists default.sfa_"+table.toLowerCase()
@@ -48,18 +48,18 @@ object TableCreation {
 				for (line <- Source.fromFile(tabledetails).getLines) {
 				  
 				  val namelist = line.split(',')
-          var Tablename = namelist(0)// Extracts the table name from the file
+          var Tablename = namelist(0).toString// Extracts the table name from the file
 					var columnName = namelist(1) // Extracts the column name from the file
 					var dataType = namelist(2) // Extracts the data_type
 					if (sfatable=Tablename)
 					{    
-					  flag="True"
+					  flag= true
 					}
 				  
-					else  { flag="False"}
+					else  { flag= false}
 					
 					
-							while ( flag="True" ) {
+							while ( flag= true ) {
 							    									
 											 if(dataType.toLowerCase().equals("varchar")){
 												columnString+="string";
