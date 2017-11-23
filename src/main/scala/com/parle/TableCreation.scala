@@ -33,6 +33,8 @@ object TableCreation {
 				
 				for (table <- Source.fromFile(tablename).getLines) {
 				  
+				  var sfatable=""
+				  var Tablename=""
 				  var sfatable=table
 				  var columnString =""
 				  var flag=""
