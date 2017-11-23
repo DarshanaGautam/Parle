@@ -28,7 +28,7 @@ object testing {
           import sqlContext.implicits._
 			
 				val tableList = args(0)
-				val dbtable = arges(1)
+				val dbtable = args(1)
 				
 				for (line <- Source.fromFile(tableList).getLines) {
 				  
