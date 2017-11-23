@@ -28,6 +28,7 @@ object testing {
           import sqlContext.implicits._
 			
 				val tableList = args(0)
+				val dbtable = arges(1)
 				
 				for (line <- Source.fromFile(tableList).getLines) {
 				  
@@ -39,7 +40,7 @@ object testing {
                option("inferSchema", "true").
                csv("hdfs://internal-hdp-master1:8020"+line)
                
-               df.saveAsTable(
+              
                
                
                
