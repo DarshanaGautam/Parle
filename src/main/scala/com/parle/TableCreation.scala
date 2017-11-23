@@ -25,6 +25,7 @@ object TableCreation {
 		    	val sc = new SparkContext(conf)
 					val sqlContext= new org.apache.spark.sql.SQLContext(sc)
 		    	val spark = org.apache.spark.sql.SparkSession.builder.master("local").appName("TableCreation").getOrCreate;
+		    	val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc) 
           import sqlContext.implicits._
 			
 				val tabledetails = args(0)
@@ -33,7 +34,9 @@ object TableCreation {
 				for (table <- Source.fromFile(tablename).getLines) {
 				  
 				  var sfatable=table
+				  var columnString =""
 				  
+				//  val statement = connection.createStatement()
 				  val dropQuery = "drop table if exists default.sfa_"+table.toLowerCase()
 					var createQuery = "create external table default.sfa_"+table.toLowerCase()+" ( "
 				  
@@ -48,12 +51,12 @@ object TableCreation {
 					
 					//val table=nameslist(0)
   
-              val statement = connection.createStatement()
+             // val statement = connection.createStatement()
 							//val resultSet = statement.executeQuery("select" +columnName+","+datatype+"From"+line+ "where TABLE_NAME = \'"+tbl+"\' and TABLE_SCHEMA=\'"+db+"\'")
 							//val dropQuery = "drop table if exists "+dbName+".mule_"+tbl.toLowerCase()
 							//var createQuery = "create external table "+dbName+".mule_"+tbl.toLowerCase()+" ( "
 							
-							var columnString =""
+							
 
 							while ( sfatable=Tablename ) {
 							    	//val columnName = resultSet.getString(1)
