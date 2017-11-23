@@ -35,8 +35,9 @@ object TableCreation {
 				  
 				  var sfatable=table
 				  var columnString =""
+				  var flag=""
 				  
-				//  val statement = connection.createStatement()
+				
 				  val dropQuery = "drop table if exists default.sfa_"+table.toLowerCase()
 					var createQuery = "create external table default.sfa_"+table.toLowerCase()+" ( "
 				  
@@ -48,20 +49,16 @@ object TableCreation {
           var Tablename = namelist(0)// Extracts the table name from the file
 					var columnName = namelist(1) // Extracts the column name from the file
 					var dataType = namelist(2) // Extracts the data_type
+					if (sfatable=Tablename)
+					{    
+					  flag="True"
+					}
+				  
+					else  { flag="False"}
 					
-					//val table=nameslist(0)
-  
-             // val statement = connection.createStatement()
-							//val resultSet = statement.executeQuery("select" +columnName+","+datatype+"From"+line+ "where TABLE_NAME = \'"+tbl+"\' and TABLE_SCHEMA=\'"+db+"\'")
-							//val dropQuery = "drop table if exists "+dbName+".mule_"+tbl.toLowerCase()
-							//var createQuery = "create external table "+dbName+".mule_"+tbl.toLowerCase()+" ( "
-							
-							
-
-							while ( sfatable=Tablename ) {
-							    	//val columnName = resultSet.getString(1)
-										//val dataType = resultSet.getString(2)
-										
+					
+							while ( flag="True" ) {
+							    									
 											 if(dataType.toLowerCase().equals("varchar")){
 												columnString+="string";
 											}
@@ -136,8 +133,7 @@ object TableCreation {
 										}	// End while	
 								
 				} // End inner for 
-					//createQuery += columnString.substring(0,columnString.length()-1 ) + ",fac_id string ,sequence bigint, ingestedtime timestamp ) PARTITIONED BY (ingestion_year int, ingestion_month int)  stored as parquet";
-					 //createQuery += columnString.substring(0,columnString.length()-1 ) + ", sequence bigint , ingestedtime timestamp)  PARTITIONED BY (ingestion_year int, ingestion_month int) stored as parquet";
+					
 					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as parquet";
 				  println(createQuery)
 				//	print(dropQuery)
