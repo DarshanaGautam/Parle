@@ -33,9 +33,8 @@ object TableCreation {
 				
 				for (table <- Source.fromFile(tablename).getLines) {
 				  
-				  //var sfatable=""
-				  //var Tablename=""
-				  var sfatable=table.toString
+				  
+				  var sfatable=table
 				  var columnString =""
 				  var flag= true 
 				  
@@ -48,7 +47,7 @@ object TableCreation {
 				for (line <- Source.fromFile(tabledetails).getLines) {
 				  
 				  val namelist = line.split(',')
-          var Tablename = namelist(0).toString// Extracts the table name from the file
+          var Tablename = namelist(0)// Extracts the table name from the file
 					var columnName = namelist(1) // Extracts the column name from the file
 					var dataType = namelist(2) // Extracts the data_type
 					if (sfatable==Tablename)
