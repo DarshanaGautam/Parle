@@ -14,8 +14,6 @@ import org.apache.spark.SparkContext
 import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.types._
 import scala.io.Source
-//import spark.implicits._
-//import sparkSession.implicits._
 
 
 
@@ -28,19 +26,22 @@ object testing {
 					val sqlContext= new org.apache.spark.sql.SQLContext(sc)
 		    	val spark = org.apache.spark.sql.SparkSession.builder.master("local").appName("Spark CSV Reader").getOrCreate;
           import sqlContext.implicits._
-				//	val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc) 
-
+			
 				val tableList = args(0)
 				
-				for (line <- Source.fromFile(""+tableList+"").getLines) {
+				for (line <- Source.fromFile(tableList).getLines) {
 				  
-				  // val namelist = line.split(',')
+			
 						println("The files are" + line)
-							//	var sourceTbl = ""
+							
 								
                val df = spark.read.option("header", "true").
                option("inferSchema", "true").
                csv("hdfs://internal-hdp-master1:8020"+line)
+               
+               df.saveAsTable(
+               
+               
                
 				}//End For
   } // End main
