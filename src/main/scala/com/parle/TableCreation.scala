@@ -51,7 +51,7 @@ object TableCreation {
           var Tablename = namelist(0).toString// Extracts the table name from the file
 					var columnName = namelist(1) // Extracts the column name from the file
 					var dataType = namelist(2) // Extracts the data_type
-					if (sfatable=Tablename)
+					if (sfatable=Tablename).toBoolean
 					{    
 					  flag= true
 					}
@@ -59,7 +59,7 @@ object TableCreation {
 					else  { flag= false}
 					
 					
-							while ( flag= true ) {
+							while ( flag= true ).toBoolean {
 							    									
 											 if(dataType.toLowerCase().equals("varchar")){
 												columnString+="string";
