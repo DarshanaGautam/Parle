@@ -2,7 +2,7 @@ package com.parle
 import scala.io.Source
 import org.apache.spark.sql.Dataset
 import org.apache.spark.sql.Row
-import org.apache.spark.sql.SQLContext
+//import org.apache.spark.sql.SQLContext
 import java.security.MessageDigest
 import org.apache.spark.sql.types.DataType
 import org.apache.spark.sql.types.DataTypes
@@ -15,6 +15,7 @@ import org.apache.spark.sql.DataFrame
 import org.apache.spark.sql.types._
 import scala.collection.JavaConversions._
 import scala.io.Source
+import java.io.File
 
 
 object TableCreation {
@@ -23,11 +24,18 @@ object TableCreation {
 
 		    	val conf = new SparkConf().setAppName("TableCreation").setMaster("local")
 		    	val sc = new SparkContext(conf)
-					val sqlContext= new org.apache.spark.sql.SQLContext(sc)
-		    	val spark = org.apache.spark.sql.SparkSession.builder.master("local").appName("TableCreation").getOrCreate;
+					//val sqlContext= new org.apache.spark.sql.SQLContext(sc)
+		    	//val spark = org.apache.spark.sql.SparkSession.builder.master("local").appName("TableCreation").getOrCreate;
 		    //	val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc) 
-          import sqlContext.implicits._
-			
+		    	
+		    	val warehouseLocation = new File("spark-warehouse").getAbsolutePath
+		    	val spark = SparkSession.builder()
+		    	             .appName("Spark Hive Example")
+		    	             .config("spark.sql.warehouse.dir", warehouseLocation)
+                       .enableHiveSupport()
+                       .getOrCreate()
+		    	
+         
 				val tabledetails = args(0)
 				val tablename = args(1)
 				
@@ -139,12 +147,15 @@ object TableCreation {
 					  	else { println (" Not equal :") }
 								
 				} // End inner for 
-					
+					import spark.implicits._
+          import spark.sql
+				  
+				  
 					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as parquet";
 				  println(createQuery)
 				//	print(dropQuery)
-					sqlContext.sql(dropQuery)
-					sqlContext.sql(createQuery)
+					sql(dropQuery)
+					sql(createQuery)
 				//	hiveContext.sql(createQuery)
 				} // End outer For
 			
