@@ -25,7 +25,7 @@ object TableCreation {
 		    	val sc = new SparkContext(conf)
 					val sqlContext= new org.apache.spark.sql.SQLContext(sc)
 		    	val spark = org.apache.spark.sql.SparkSession.builder.master("local").appName("TableCreation").getOrCreate;
-		    	val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc) 
+		    //	val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc) 
           import sqlContext.implicits._
 			
 				val tabledetails = args(0)
@@ -143,8 +143,9 @@ object TableCreation {
 					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as parquet";
 				  println(createQuery)
 				//	print(dropQuery)
-					hiveContext.sql(dropQuery)
-					hiveContext.sql(createQuery)
+					sqlContext.sql(dropQuery)
+					sqlContext.sql(createQuery)
+				//	hiveContext.sql(createQuery)
 				} // End outer For
 			
           
