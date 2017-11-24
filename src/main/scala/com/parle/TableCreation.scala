@@ -39,8 +39,8 @@ object TableCreation {
 				  var flag= true 
 				  
 				
-				  val dropQuery = "drop table if exists default.sfa_"+table.toLowerCase()
-					var createQuery = "create external table default.sfa_"+table.toLowerCase()+" ( "
+				  val dropQuery = "drop table if exists parle.sfa_"+table.toLowerCase()
+					var createQuery = "create external table parle.sfa_"+table.toLowerCase()+" ( "
 				  
 				
 				
