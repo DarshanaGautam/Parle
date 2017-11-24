@@ -59,7 +59,9 @@ object TableCreation {
 					
 					
 							while ( flag== true ) {
-							    									
+							
+							  columnString = columnString +columnName.toLowerCase()+"  ";  			
+							  
 											 if(dataType.toLowerCase().equals("varchar")){
 												columnString+="string";
 											}
