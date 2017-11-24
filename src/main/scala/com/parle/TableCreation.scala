@@ -151,7 +151,7 @@ object TableCreation {
           import spark.sql
 				  
 				  
-					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as parquet";
+					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as parquet LOCATION 'hdfs://nameservice1/user/darshana/'";
 				  println(createQuery)
 				//	print(dropQuery)
 					sql(dropQuery)
