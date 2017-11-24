@@ -49,7 +49,7 @@ object TableCreation {
 				  println (" \n \n  !!!!!!!!!!!! Inside second Loop"+line)
 				  
 				  
-				  /*val namelist = line.split(',')
+				  val namelist = line.split(',')
           var Tablename = namelist(0)// Extracts the table name from the file
 					var columnName = namelist(1) // Extracts the column name from the file
 					var dataType = namelist(2) // Extracts the data_type
@@ -57,25 +57,10 @@ object TableCreation {
 					println(" \n \n Table name is :" +Tablename+"")
 					println(" \n \n Column name is :" +columnName+"")
 					println(" \n \n Data type is :" +dataType+ "")
-					
-					if (sfatable==Tablename)
-					{    
-					  flag= true
-					  println(flag)
+						
+					  	if (sfatable==Tablename)
+				   	{    
 					  
-					}
-				  
-					else  
-					{ 
-					  flag= false 
-					  println(flag)
-					  
-					
-					}
-					
-					
-							while ( flag== true ) {
-							
 							  columnString = columnString +columnName.toLowerCase()+"  ";  			
 							  
 											 if(dataType.toLowerCase().equals("varchar")){
@@ -149,8 +134,10 @@ object TableCreation {
 													columnString+="string";
 											}
 											 columnString +=",";
-										}	// End while	
-								*/
+										}	// End if	sfatable==Tablename
+				  
+					  	else { println (" Not equal :") }
+								
 				} // End inner for 
 					
 					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as parquet";
