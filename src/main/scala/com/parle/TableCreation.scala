@@ -46,19 +46,26 @@ object TableCreation {
 				
 				for (line <- Source.fromFile(tabledetails).getLines) {
 				  
-				  println (" /n /n /n !!!!!!!!!!!! Inside second Loop")
+				  println (" \n \n  !!!!!!!!!!!! Inside second Loop")
 				  
 				  
 				  val namelist = line.split(',')
           var Tablename = namelist(0)// Extracts the table name from the file
 					var columnName = namelist(1) // Extracts the column name from the file
 					var dataType = namelist(2) // Extracts the data_type
+					
+					println(" \n \n Table name is :"Tablename)
+					println(" \n \n Column name is :"columnName)
+					println(" \n \n Data type is :"dataType)
+					
 					if (sfatable==Tablename)
 					{    
 					  flag= true
+					  println(flag)
+					  
 					}
 				  
-					else  { flag= false}
+					else  { flag= false println(flag) }
 					
 					
 							while ( flag== true ) {
