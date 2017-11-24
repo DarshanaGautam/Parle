@@ -33,7 +33,7 @@ object TableCreation {
 				
 				for (table <- Source.fromFile(tablename).getLines) {
 				  
-				  
+				  println (" !!!!!!!!!!!! Inside first Loop")
 				  var sfatable=table
 				  var columnString =""
 				  var flag= true 
@@ -45,6 +45,9 @@ object TableCreation {
 				
 				
 				for (line <- Source.fromFile(tabledetails).getLines) {
+				  
+				  println (" /n /n /n !!!!!!!!!!!! Inside second Loop")
+				  
 				  
 				  val namelist = line.split(',')
           var Tablename = namelist(0)// Extracts the table name from the file
