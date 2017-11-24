@@ -65,7 +65,13 @@ object TableCreation {
 					  
 					}
 				  
-					else  { flag= false  }
+					else  
+					{ 
+					  flag= false 
+					  println(flag)
+					  
+					
+					}
 					
 					
 							while ( flag== true ) {
