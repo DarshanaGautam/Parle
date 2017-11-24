@@ -2,7 +2,6 @@ package com.parle
 import scala.io.Source
 import org.apache.spark.sql.Dataset
 import org.apache.spark.sql.Row
-//import org.apache.spark.sql.SQLContext
 import java.security.MessageDigest
 import org.apache.spark.sql.types.DataType
 import org.apache.spark.sql.types.DataTypes
@@ -24,10 +23,6 @@ object TableCreation {
 
 		    	val conf = new SparkConf().setAppName("TableCreation").setMaster("local")
 		    	val sc = new SparkContext(conf)
-					//val sqlContext= new org.apache.spark.sql.SQLContext(sc)
-		    	//val spark = org.apache.spark.sql.SparkSession.builder.master("local").appName("TableCreation").getOrCreate;
-		    //	val hiveContext = new org.apache.spark.sql.hive.HiveContext(sc) 
-		    	
 		    	val warehouseLocation = new File("spark-warehouse").getAbsolutePath
 		    	val spark = SparkSession.builder()
 		    	             .appName("Spark Hive Example")
@@ -41,30 +36,17 @@ object TableCreation {
 				
 				for (table <- Source.fromFile(tablename).getLines) {
 				  
-				  println (" !!!!!!!!!!!! Inside first Loop")
 				  var sfatable=table
-				  var columnString =""
-				  var flag= true 
-				  
-				
+				  var columnString =""	
 				  val dropQuery = "drop table if exists parle.sfa_"+table.toLowerCase()
 					var createQuery = "create external table parle.sfa_"+table.toLowerCase()+" ( "
-				  
-				
-				
-				for (line <- Source.fromFile(tabledetails).getLines) {
-				  
-				  println (" \n \n  !!!!!!!!!!!! Inside second Loop"+line)
-				  
-				  
+					
+				       for (line <- Source.fromFile(tabledetails).getLines)
+				{
 				  val namelist = line.split(',')
           var Tablename = namelist(0)// Extracts the table name from the file
 					var columnName = namelist(1) // Extracts the column name from the file
 					var dataType = namelist(2) // Extracts the data_type
-					
-					println(" \n \n Table name is :" +Tablename+"")
-					println(" \n \n Column name is :" +columnName+"")
-					println(" \n \n Data type is :" +dataType+ "")
 						
 					  	if (sfatable==Tablename)
 				   	{    
@@ -95,8 +77,7 @@ object TableCreation {
 											else if(dataType.toLowerCase().equals("double")){
 													columnString+="double";
 												}
-											else if(dataType.toLowerCase().equals("tinyblob")){
-													//System.out.println("....................................."+dataType.toLowerCase());
+											else if(dataType.toLowerCase().equals("tinyblob")){						
 													columnString+="string";
 												}
 											else if(dataType.toLowerCase().equals("char")){
@@ -142,22 +123,22 @@ object TableCreation {
 													columnString+="string";
 											}
 											 columnString +=",";
-										}	// End if	sfatable==Tablename
+								}	
 				  
 					  	else { println (" Not equal :") }
 								
-				} // End inner for 
+			} 
 					import spark.implicits._
           import spark.sql
+          
+					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as parquet LOCATION 'hdfs://internal-hdp-master1/user/hive/'";
 				  
-				  
-					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as parquet LOCATION 'hdfs://internal-hdp-master1/user/darshana/'";
-				  println(createQuery)
-				//	print(dropQuery)
+					println(createQuery)
+		
 					sql(dropQuery)
 					sql(createQuery)
-				//	hiveContext.sql(createQuery)
-				} // End outer For
+				
+			} 
 			
           
    }// End main
