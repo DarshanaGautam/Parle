@@ -46,10 +46,10 @@ object TableCreation {
 				
 				for (line <- Source.fromFile(tabledetails).getLines) {
 				  
-				  println (" \n \n  !!!!!!!!!!!! Inside second Loop")
+				  println (" \n \n  !!!!!!!!!!!! Inside second Loop"+line)
 				  
 				  
-				  val namelist = line.split(',')
+				  /*val namelist = line.split(',')
           var Tablename = namelist(0)// Extracts the table name from the file
 					var columnName = namelist(1) // Extracts the column name from the file
 					var dataType = namelist(2) // Extracts the data_type
@@ -150,7 +150,7 @@ object TableCreation {
 											}
 											 columnString +=",";
 										}	// End while	
-								
+								*/
 				} // End inner for 
 					
 					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as parquet";
