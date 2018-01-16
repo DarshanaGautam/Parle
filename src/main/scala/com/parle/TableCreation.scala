@@ -63,8 +63,8 @@ object TableCreation {
 											else if(dataType.toLowerCase().equals("bigint")){
 													columnString+="bigint";
 												}
-											else if(dataType.toLowerCase().equals("longtext")){
-													columnString+="string";
+											else if(dataType.toLowerCase().equals("numeric")){
+													columnString+="double";
 												}
 											else if(dataType.toLowerCase().equals("datetime")){
 													columnString+="string";
@@ -114,7 +114,7 @@ object TableCreation {
 											else if(dataType.toLowerCase().equals("set")){
 													columnString+="string";
 											}
-											else if(dataType.toLowerCase().equals("enum")){
+											else if(dataType.toLowerCase().equals("nvarchar")){
 													columnString+="string";
 											}
 											else if(dataType.toLowerCase().equals("mediumtext")){
