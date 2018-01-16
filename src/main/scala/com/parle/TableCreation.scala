@@ -42,8 +42,8 @@ object TableCreation {
 				  
 				  var sfatable=table
 				  var columnString =""	
-				  val dropQuery = "drop table if exists parle.dotnet_bps_"+table.toLowerCase()
-					var createQuery = "create external table parle.dotnet_bps_"+table.toLowerCase()+" ( "
+				  val dropQuery = "drop table if exists antuit_prod.dotnet_bps_"+table.toLowerCase()
+					var createQuery = "create external table antuit_prod.dotnet_bps_"+table.toLowerCase()+" ( "
 					
 				       for (line <- Source.fromFile(tabledetails).getLines)
 				{
