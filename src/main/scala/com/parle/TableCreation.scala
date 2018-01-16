@@ -42,8 +42,8 @@ object TableCreation {
 				  
 				  var sfatable=table
 				  var columnString =""	
-				  val dropQuery = "drop table if exists parle.sfa_"+table.toLowerCase()
-					var createQuery = "create external table parle.sfa_"+table.toLowerCase()+" ( "
+				  val dropQuery = "drop table if exists parle.dotnet_bps_"+table.toLowerCase()
+					var createQuery = "create external table parle.dotnet_bps_"+table.toLowerCase()+" ( "
 					
 				       for (line <- Source.fromFile(tabledetails).getLines)
 				{
@@ -135,7 +135,7 @@ object TableCreation {
 					import spark.implicits._
           import spark.sql
           
-					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as parquet LOCATION 'hdfs://internal-hdp-master1/user/hive/'";
+					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as orc LOCATION 'wasb://str-papl@strpapl.blob.core.windows.net/user/commonuser/'";
 				  
 					println(createQuery)
 		
