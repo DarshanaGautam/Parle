@@ -41,6 +41,7 @@ object TableCreation {
 				for (table <- Source.fromFile(tablename).getLines) {
 				  
 				  var sfatable=table
+				  println ("Table name is " + sfatable)
 				  var columnString =""	
 				  val dropQuery = "drop table if exists antuit_prod.dotnet_bps_"+table.toLowerCase()
 					var createQuery = "create external table antuit_prod.dotnet_bps_"+table.toLowerCase()+" ( "
@@ -52,7 +53,9 @@ object TableCreation {
 					var columnName = namelist(1) // Extracts the column name from the file
 					var dataType = namelist(2) // Extracts the data_type
 						
-					  	if (trim(sfatable)==trim(Tablename))
+					 println ("Table name is " + Tablename)
+					
+					  	if (sfatable==Tablename)
 				   	{    
 					  
 							  columnString = columnString +columnName.toLowerCase()+"  ";  			
