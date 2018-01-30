@@ -52,7 +52,7 @@ object TableCreation {
 					var columnName = namelist(1) // Extracts the column name from the file
 					var dataType = namelist(2) // Extracts the data_type
 						
-					  	if (sfatable==Tablename)
+					  	if (trim(sfatable)==trim(Tablename))
 				   	{    
 					  
 							  columnString = columnString +columnName.toLowerCase()+"  ";  			
