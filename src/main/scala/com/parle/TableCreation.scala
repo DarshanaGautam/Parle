@@ -53,7 +53,7 @@ object TableCreation {
 					var columnName = namelist(1) // Extracts the column name from the file
 					var dataType = namelist(2) // Extracts the data_type
 						
-					 println ("Table name is " + Tablename)
+					// println ("Table name is " + Tablename)
 					
 					  	if (sfatable==Tablename)
 				   	{    
