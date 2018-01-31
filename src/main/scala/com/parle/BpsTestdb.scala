@@ -135,7 +135,7 @@ object BpsTestdb {
 					import spark.implicits._
           import spark.sql
           
-					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as TEXTFILE LOCATION '/user/darshana/'";
+					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as TEXTFILE ";
 				  
 					println(createQuery)
 		
