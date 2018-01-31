@@ -138,7 +138,7 @@ object TableCreation {
 					import spark.implicits._
           import spark.sql
           
-					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as orc LOCATION 'hdfs://hdp-prod-02:8020/user/commonuser'";
+					createQuery += columnString.substring(0,columnString.length()-1 ) + ") stored as orc LOCATION 'wasb://str-papl@strpapl.blob.core.windows.net/user/commonuser/'";
 				  
 					println(createQuery)
 		
