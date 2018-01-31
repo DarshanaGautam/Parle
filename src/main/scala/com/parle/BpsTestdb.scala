@@ -19,6 +19,8 @@ import java.io.File
 
 object BpsTestdb {
   
+  
+  
    def main(args: Array[String]): Unit = {
 
 		    	val conf = new SparkConf().setAppName("bpsTableCreation").setMaster("local")
